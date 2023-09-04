@@ -17,14 +17,11 @@ scalacOptions in (Compile,doc) := Seq("-no-link-warnings")
 autoAPIMappings := true
 
 enablePlugins(BuildInfoPlugin)
-enablePlugins(GhpagesPlugin)
 enablePlugins(SiteScaladocPlugin)
 
 buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
 buildInfoPackage := "scredis"
 buildInfoOptions += BuildInfoOption.BuildTime
-
-git.remoteRepo := "git@github.com:scredis/scredis.git"
 
 val akkaV = "2.5.32"
 val loggingV = "3.9.5"
@@ -92,3 +89,5 @@ paradoxTheme := Some(builtinParadoxTheme("generic"))
 lazy val Benchmark = config("bench") extend Test
 configs(Benchmark)
 inConfig(Benchmark)(Defaults.testSettings)
+
+releaseAllowedFromBranch := true
